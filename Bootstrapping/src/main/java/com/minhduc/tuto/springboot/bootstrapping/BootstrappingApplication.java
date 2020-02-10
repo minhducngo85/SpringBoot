@@ -24,6 +24,7 @@ public class BootstrappingApplication {
 	LOGGER.info("this is a info message");
 	LOGGER.warn("this is a warn message");
 	LOGGER.error("this is a error message");
+	LOGGER.error("this is a custom message");
 	SpringApplication.run(BootstrappingApplication.class, args);
     }
 
