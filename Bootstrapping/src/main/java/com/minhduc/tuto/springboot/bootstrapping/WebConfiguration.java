@@ -35,7 +35,6 @@ public class WebConfiguration implements WebMvcConfigurer {
     
    
 
-    // new code commet
     @Bean
     public Docket api() {
 	// @formatter:off
