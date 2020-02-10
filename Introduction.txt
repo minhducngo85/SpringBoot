@@ -1,0 +1,67 @@
+Temp branch
+Microservices - With Spring boot
+
+This tutorial will help you learn the basics of microservices and microservices architctures. Addintionally you can create a simple microservice using Spring Boot.
+
+You will learn:
+
+1) What is monolith?
+-> Monolith application are typically huge - more 100.000 lines of code. In some instances even more than million lines of code
+
+-> Monoliths are characterized by:
+ - large application size
+ - long release cycles
+ - large teams
+
+ -> Chalenges for Monolith
+ - scalability chalenges
+ - new technology adaption
+ - deficult to automate tests
+ 
+2) what is a microservice?
+-> developing a single application as a suite of small services each running in its own process and communicating with lightweight mechnisms, often an HTTP resources API. (REST)
+-> Cloud enabled - dynamic scaling
+
+-> advantages:
+ - new technology adoption becomes easier
+ - faster release cycles
+ - scaling with cloud
+
+3) What are the challenges in Microservices?
+- Quick setup needed and automation: because you have a big number of smaller component instead of monolith, you need automate everythin - Build, development, Monitoring etc.
+- Bounded contect: diffucult to identify the bounderies of a microservices. Bounded context from Domain Name Driven Design is a good starting point.
+- Configuration Management
+- Dynamic scale up and scale down in cloud
+- Pack of cards: It a microservice at the bottom called fails, it can break all other services. Microservices should be fault tolerant by design
+- Debuging: Centralized logging and Dashboard are essential to make it easy to be debug problems
+
+4) How does Spring Boot and Spring Cloud make developing microservice easy?
+4.1. Spring Boot
+ -> Spring boot is designed to develop microservice using Spring Framework. It is easy to create stand-alone and production ready spring application.
+ -> Feature
+   - embedded server
+   - metrics (monitoring)
+  - health checks (monitoring)
+  - externalized configuration
+
+4.2 Spring cloud  : solution ro cloud your microservices.
+Important Spring Cloud Modules:
+-> Dynamic Scale Up and Scale down:
+   - Naming Server (Eureka)
+   - Ribbon (Client side load balancing)
+   - Feign (Easier rest client)
+
+-> Visibility and Monitoring with
+    - Zipkin Distributed Tracing
+    - Netflix API Gateway
+
+-> Configuration Management with
+    - Spring Cloud Config Server
+
+-> Fault Tolerance with
+    - Hystrix
+
+
+5) how to implement the client side load balancing with Ribbon?
+- How to implement a Naming Server (Eureka Naming Server)
+- How to connect the microservice with Naming Server and Ribbon

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link href="css/styles.css" rel="stylesheet" />
+<title>Spring Boot Web Application</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<h4>View Products</h4>
+	<script>
+$(document).ready(function(){
+   $.getJSON("http://localhost:8080/rest/products", function(result){
+      $.each(result, function(key,value) {
+    	  console.log(key);
+    	  console.log(value);
+         $("#productsJson").append(value.id+" "+value.name+" ");
+      }); 
+   });
+});
+</script>
+	<div id="productsJson"></div>
+</body>
+</html>
