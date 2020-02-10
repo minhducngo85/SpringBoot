@@ -30,6 +30,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 	registry.addMapping("/**");
     }
 
+    // new code commet
     @Bean
     public Docket api() {
 	// @formatter:off
