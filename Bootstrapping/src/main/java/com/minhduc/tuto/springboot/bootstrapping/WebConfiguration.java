@@ -24,11 +24,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableWebMvc // to enable cors support
 public class WebConfiguration implements WebMvcConfigurer {
 
+
+    
+    
     // enable cors support
     @Override
     public void addCorsMappings(CorsRegistry registry) {
 	registry.addMapping("/**");
     }
+    
+   
 
     // new code commet
     @Bean

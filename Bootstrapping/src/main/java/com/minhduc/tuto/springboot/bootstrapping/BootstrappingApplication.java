@@ -15,7 +15,8 @@ public class BootstrappingApplication {
 
     /** Logger object */
     private static final Logger LOGGER = LoggerFactory.getLogger(BootstrappingApplication.class.getName());
-   
+
+    
     @Value("${spring.application.name}")
     private String name;
 
