@@ -1,0 +1,8 @@
+Tuto link:
+https://www.baeldung.com/spring-security-saml
+
+GitHub:
+https://github.com/eugenp/tutorials/tree/master/spring-security-modules/spring-security-saml
+
+Keystore generation:
+keytool -genkeypair -alias baeldungspringsaml -keypass baeldungsamlokta -keystore saml-keystore.jks -keyalg RSA -sigalg SHA256withRSA
