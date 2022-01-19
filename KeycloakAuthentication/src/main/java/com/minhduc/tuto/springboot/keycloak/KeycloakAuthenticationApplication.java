@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class KeycloakAuthenticationApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(KeycloakAuthenticationApplication.class, args);
-	}
+    public static void main(String[] args) {
+	SpringApplication.run(KeycloakAuthenticationApplication.class, args);
+    }
 
 }
