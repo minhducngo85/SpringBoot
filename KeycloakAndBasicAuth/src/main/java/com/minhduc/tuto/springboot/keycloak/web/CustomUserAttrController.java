@@ -9,17 +9,24 @@ import org.keycloak.KeycloakPrincipal;
 import org.keycloak.KeycloakSecurityContext;
 import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
 import org.keycloak.representations.IDToken;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.minhduc.tuto.springboot.keycloak.config.CustomKeycloakAuthenticationProvider;
+
 @Controller
 public class CustomUserAttrController {
+    
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomUserAttrController.class.getName());
 
     @SuppressWarnings("unchecked")
     @GetMapping(path = "/users")
     public String getUserInfo(Model model) {
+	LOGGER.info("get user info");
 	KeycloakAuthenticationToken authentication = (KeycloakAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
 	final Principal principal = (Principal) authentication.getPrincipal();
 

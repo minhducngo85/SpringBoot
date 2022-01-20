@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.List;
 
 import org.keycloak.adapters.springsecurity.account.KeycloakRole;
-import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
 import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
@@ -27,12 +26,9 @@ public class CustomKeycloakAuthenticationProvider implements AuthenticationProvi
 	// add custom role form Code
 	String name = token.getName();
 	System.out.println(name);
-	if ("minhducngo".equalsIgnoreCase(name) || "ue1phot".equalsIgnoreCase(name)) {
+	if ("minhducngo".equalsIgnoreCase(name)) {
 	    grantedAuthorities.add(new KeycloakRole("admin"));
-	    grantedAuthorities.add(new KeycloakRole("rest"));
-	} else if ("rest".equalsIgnoreCase(name)) {
-	    grantedAuthorities.add(new KeycloakRole("rest"));
-	}
+	} 
 	grantedAuthorities.add(new KeycloakRole("user"));
 	for (String role : token.getAccount().getRoles()) {
 	    System.out.println(role);
