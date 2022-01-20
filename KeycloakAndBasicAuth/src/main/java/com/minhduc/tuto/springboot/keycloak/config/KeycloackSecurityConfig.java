@@ -84,6 +84,5 @@ class KeycloackSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 	    String authorizationHeaderValue = request.getHeader("Authorization");
 	    return authorizationHeaderValue != null && !authorizationHeaderValue.startsWith("Basic ");
 	}
-
     }
 }

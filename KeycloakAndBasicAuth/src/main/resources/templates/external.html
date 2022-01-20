@@ -22,6 +22,12 @@
 			<div class="well">
 				<b>Enter the intranet: </b><a th:href="@{/admin}">Admin Page</a>
 			</div>
+
+			<h2>REST API with Basic Authentication (user,pass) = (rest,rest)</h2>
+			<div class="well">
+				<b>Rest Link 1: </b><a th:href="@{/rest/products}">Get Message</a><br />
+				<b>Rest Link 2: </b><a th:href="@{/rest/products}">Get Products</a>
+			</div>
 		</div>
 		<div id="pagefoot" th:include="layout :: footerFragment">Footer
 		</div>
