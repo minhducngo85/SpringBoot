@@ -2,7 +2,6 @@ package com.minhduc.tuto.springboot.keycloak.config;
 
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.keycloak.adapters.springsecurity.KeycloakConfiguration;
-import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +17,8 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
     // Submits the KeycloakAuthenticationProvider to the AuthenticationManager
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	//KeycloakAuthenticationProvider keycloakAuthenticationProvider = keycloakAuthenticationProvider();
+	// KeycloakAuthenticationProvider keycloakAuthenticationProvider =
+	// keycloakAuthenticationProvider();
 	CustomKeycloakAuthenticationProvider keycloakAuthenticationProvider = new CustomKeycloakAuthenticationProvider();
 	keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new SimpleAuthorityMapper());
 	auth.authenticationProvider(keycloakAuthenticationProvider);
@@ -40,9 +40,9 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 	super.configure(http);
 	http.authorizeRequests().antMatchers("/customers*", "/users*").hasRole("user")
-	// Admin user
-        .antMatchers("/admin*").hasAnyRole("admin", "super_admin")
-        //
-	.anyRequest().permitAll();
+	        // Admin user
+	        .antMatchers("/admin*").hasAnyRole("admin", "super_admin")
+	        //
+	        .anyRequest().permitAll();
     }
 }
