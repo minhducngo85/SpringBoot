@@ -10,6 +10,7 @@ import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class WebController {
@@ -22,16 +23,19 @@ public class WebController {
 	return "external";
     }
 
-
     @GetMapping(path = "/denied")
     public String accessDenied() {
 	return "accessdenied";
     }
 
-    
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) throws Exception {
 	request.logout();
+	HttpSession session = request.getSession(false);
+	// Destroys the session for this user.
+	if (session != null) {
+	    session.invalidate();
+	}
 	return "redirect:/";
     }
 

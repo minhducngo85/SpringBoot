@@ -28,10 +28,8 @@ public class CustomKeycloakAuthenticationProvider implements AuthenticationProvi
 	System.out.println(name);
 	if ("minhducngo".equalsIgnoreCase(name) || "ue1phot".equalsIgnoreCase(name)) {
 	    grantedAuthorities.add(new KeycloakRole("admin"));
-	    grantedAuthorities.add(new KeycloakRole("rest"));
-	} else if ("rest".equalsIgnoreCase(name)) {
-	    grantedAuthorities.add(new KeycloakRole("rest"));
 	}
+	/// default role
 	grantedAuthorities.add(new KeycloakRole("user"));
 	for (String role : token.getAccount().getRoles()) {
 	    System.out.println(role);
