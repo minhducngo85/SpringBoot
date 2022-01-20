@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: headerFragment">
+</head>
+<body>
+	<div id="container">
+		<h1>
+			Hello Admin, <span th:text="${username}">--name--</span>.
+		</h1>
+		<h3>
+			Your Date of Birth as per our records is <span th:text="${dob}" />.
+		</h3>
+		<h3>
+			Keycloack Server Roles: <span th:text="${KeycloakRoles}" />.
+		</h3>
+		<h3>
+			Custom APP Roles: <span th:text="${AppRoles}" />.
+		</h3>
+		
+		
+	    <br/>
+		<br/>
+		<div id="pagefoot" th:include="layout :: footerFragment">Footer
+		</div>
+		<br/>
+		<a href="/logout">Logout</a>
+	</div>
+</body>
+</html>
