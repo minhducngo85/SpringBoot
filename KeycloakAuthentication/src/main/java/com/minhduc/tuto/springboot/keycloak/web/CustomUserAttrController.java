@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class CustomUserAttrController {
 
+    @SuppressWarnings("unchecked")
     @GetMapping(path = "/users")
     public String getUserInfo(Model model) {
 	KeycloakAuthenticationToken authentication = (KeycloakAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
