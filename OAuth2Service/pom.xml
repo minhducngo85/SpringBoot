@@ -141,18 +141,11 @@
             <artifactId>commons-cli</artifactId>
             <version>1.4</version>
         </dependency>
-        <!-- Strign util -->
+        <!-- String util -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.4</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.github.scribejava/scribejava-core -->
-        <dependency>
-            <groupId>com.github.scribejava</groupId>
-            <artifactId>scribejava-core</artifactId>
-            <version>6.9.0</version>
         </dependency>
     </dependencies>
 </project>

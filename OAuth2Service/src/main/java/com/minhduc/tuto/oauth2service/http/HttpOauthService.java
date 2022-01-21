@@ -1,13 +1,14 @@
 package com.minhduc.tuto.oauth2service.http;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URLEncoder;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.github.scribejava.core.utils.OAuthEncoder;
 import com.minhduc.tuto.oauth2service.AppAndOsUtils;
 import com.minhduc.tuto.oauth2service.RestTemplateUtils;
 
@@ -30,7 +31,11 @@ public class HttpOauthService {
     private static final String CALLBACK_URL = SERVER_URL + "/auth_callback";
 
     public static String getAuthorizationUrl() {
-	return String.format(AUTHORIZE_URL, ClientId, OAuthEncoder.encode(CALLBACK_URL));
+	try {
+	    return String.format(AUTHORIZE_URL, ClientId, URLEncoder.encode(CALLBACK_URL, "UTF-8"));
+	} catch (UnsupportedEncodingException e) {
+	    return "";
+	}
     }
 
     /**
