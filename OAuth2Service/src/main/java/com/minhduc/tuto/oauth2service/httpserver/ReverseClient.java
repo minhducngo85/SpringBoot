@@ -20,6 +20,7 @@ public class ReverseClient {
 	    OutputStream output = socket.getOutputStream();
 	    PrintWriter writer = new PrintWriter(output, true);
 
+	    @SuppressWarnings("unused")
 	    Console console = System.console();
 	    String text;
 	    int i = 0;
