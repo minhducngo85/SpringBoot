@@ -12,9 +12,6 @@ import java.net.*;
 public class ReverseClient {
 
     public static void main(String[] args) throws InterruptedException {
-	// if (args.length < 2)
-	// return;
-
 	String hostname = "localhost";
 	int port = 8081;
 

@@ -20,7 +20,6 @@ public class ReverseServer {
 	    while (true) {
 		Socket socket = serverSocket.accept();
 		System.out.println("New client connected");
-
 		InputStream input = socket.getInputStream();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(input));
 
