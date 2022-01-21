@@ -1,4 +1,4 @@
-package com.minhduc.tuto.oauth2service.https;
+package com.minhduc.tuto.oauth2service.http;
 
 import java.io.IOException;
 
@@ -11,29 +11,30 @@ import org.apache.logging.log4j.Logger;
 
 import com.minhduc.tuto.oauth2service.SocketHandlerUtils;
 
-public class SSLSocketHandler implements Runnable {
+public class SocketHandler implements Runnable {
 
     /**
      * Logger object
      */
-    private static final Logger LOGGER = LogManager.getLogger(SSLSocketHandler.class);
+    private static final Logger LOGGER = LogManager.getLogger(SocketHandler.class);
 
     private final Socket socket;
     private ServerSocket server;
 
     private boolean closeServer = false;
 
-    public SSLSocketHandler(Socket socket, ServerSocket server) {
+    public SocketHandler(Socket socket, ServerSocket server) {
 	this.socket = socket;
 	this.server = server;
     }
 
     @Override
     public void run() {
-	LOGGER.debug("SSLSocketHandler started!");
+	LOGGER.debug("SocketHandler started!");
 	// initialize logging information
 	String host = this.socket.getInetAddress().getHostName();
 	String path = null;
+
 	// handle request
 	try {
 	    path = SocketHandlerUtils.readRequestPath(socket);
@@ -54,6 +55,7 @@ public class SSLSocketHandler implements Runnable {
 		System.err.println("Error while closing socket to " + host + ": " + e.getMessage());
 	    }
 	}
+
     }
 
     /**
@@ -69,8 +71,9 @@ public class SSLSocketHandler implements Runnable {
 	String response = null;
 	// handle request
 	if (StringUtils.isEmpty(path) || path.equals("/")) { // default
-	    String authorizationUrl = HttpsOauthService.getAuthorizationUrl();
-	    response = SocketHandlerUtils.defaultResponse(authorizationUrl);
+	    response = "<h1>Hello, I am a client of API Service</h1><h3><a href=\"%s\">Please authorize first</a></h3>";
+	    String authorizationUrl = HttpOauthService.getAuthorizationUrl();
+	    response = String.format(response, authorizationUrl);
 	    // handle authentication code
 	} else if (path.startsWith("/auth_callback")) {
 	    String code = SocketHandlerUtils.extractUriParameter(path, "code");
@@ -82,7 +85,7 @@ public class SSLSocketHandler implements Runnable {
 
 		boolean getTokenNow = false;
 		if (getTokenNow) {
-		    String[] tokens = HttpsOauthService.requestTokenFromAuthCode(code, sessionstate);
+		    String[] tokens = HttpOauthService.requestTokenFromAuthCode(code, sessionstate);
 		    response += SocketHandlerUtils.getTokenNowResponse(tokens);
 		}
 	    }
@@ -92,19 +95,18 @@ public class SSLSocketHandler implements Runnable {
 	    if (code == null)
 		response = "Failed to get token!";
 	    else {
-		String[] tokens = HttpsOauthService.requestTokenFromAuthCode(code, sessionstate);
+		String[] tokens = HttpOauthService.requestTokenFromAuthCode(code, sessionstate);
 		response = SocketHandlerUtils.getTokenResponse(tokens);
 
 		// if you want to close server, set it = true
 		closeServer = false;
-
 	    }
 	} else if (path.startsWith("/refresh_tokens")) {
 	    String refresh_token = SocketHandlerUtils.extractUriParameter(path, "refresh_token");
 	    if (refresh_token == null)
 		response = "Failed to refresh token!";
 	    else {
-		String[] tokens = HttpsOauthService.refreshToken(refresh_token);
+		String[] tokens = HttpOauthService.refreshToken(refresh_token);
 		response = SocketHandlerUtils.refreshTokenResponse(tokens);
 	    }
 	}

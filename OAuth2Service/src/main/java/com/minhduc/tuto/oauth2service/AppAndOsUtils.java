@@ -1,10 +1,13 @@
 package com.minhduc.tuto.oauth2service;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 
 import org.apache.logging.log4j.LogManager;
@@ -83,5 +86,30 @@ public final class AppAndOsUtils {
 	    return model.getArtifactId() + "-" + model.getVersion();
 	}
 	return "";
+    }
+
+    /**
+     * to start a web browser
+     * 
+     * @param url
+     */
+    public static void browse(String url) {
+	LOGGER.debug("Open web browser: {}", url);
+	try {
+	    if (Desktop.isDesktopSupported()) {
+		Desktop desktop = Desktop.getDesktop();
+		desktop.browse(new URI(url));
+	    } else if (AppAndOsUtils.isWindows()) {
+		Runtime runtime = Runtime.getRuntime();
+		runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);
+	    } else {
+		// Ubuntu
+		Runtime runtime = Runtime.getRuntime();
+		runtime.exec("xdg-open " + url);
+	    }
+	} catch (IOException | URISyntaxException e) {
+	    LOGGER.debug(e.getMessage());
+	    LOGGER.debug("Unable to start Webbroser. Please open webbroswer and visit: {}", url);
+	}
     }
 }
