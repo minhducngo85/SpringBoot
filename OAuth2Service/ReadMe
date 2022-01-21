@@ -1,0 +1,6 @@
+1. start keylock server
+2. clientid: login-app
+valid redirect urls: http://localhost*
+https://localhost*
+
+3. start HttpOauthService or HttpsOauthService
