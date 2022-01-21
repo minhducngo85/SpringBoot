@@ -22,7 +22,6 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
-import com.minhduc.tuto.oauth2service.http.HttpOauthService;
 
 public class RestTemplateUtils {
 

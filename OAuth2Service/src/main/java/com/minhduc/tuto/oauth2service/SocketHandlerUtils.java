@@ -12,9 +12,6 @@ import java.util.regex.Pattern;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.minhduc.tuto.oauth2service.http.HttpOauthService;
-import com.minhduc.tuto.oauth2service.https.HttpsOauthService;
-
 public class SocketHandlerUtils {
     private static final Logger LOGGER = LogManager.getLogger(SocketHandlerUtils.class);
 
