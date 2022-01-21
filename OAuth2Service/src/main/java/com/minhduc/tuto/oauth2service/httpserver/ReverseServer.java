@@ -1,6 +1,5 @@
 package com.minhduc.tuto.oauth2service.httpserver;
 
-
 import java.io.*;
 import java.net.*;
 
@@ -9,11 +8,10 @@ public class ReverseServer {
     public static void main(String[] args) {
 	int port = 8081;
 	if (args.length < 1) {
-	    
+
 	} else {
 	    port = Integer.parseInt(args[0]);
 	}
-
 
 	try (ServerSocket serverSocket = new ServerSocket(port)) {
 
@@ -33,10 +31,10 @@ public class ReverseServer {
 
 		do {
 		    text = reader.readLine();
-		    String reverseText = new StringBuilder(text).reverse().toString();
-		    writer.println("Server: " + reverseText);
+		    System.out.println("Server: " + text);
+		    writer.println(text);
 
-		} while (!text.equals("bye"));
+		} while (!"bye".equals(text));
 
 		socket.close();
 	    }

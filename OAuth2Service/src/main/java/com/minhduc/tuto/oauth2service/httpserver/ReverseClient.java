@@ -1,6 +1,5 @@
 package com.minhduc.tuto.oauth2service.httpserver;
 
-
 import java.io.*;
 import java.net.*;
 
@@ -12,9 +11,9 @@ import java.net.*;
  */
 public class ReverseClient {
 
-    public static void main(String[] args) {
-	//if (args.length < 2)
-	//    return;
+    public static void main(String[] args) throws InterruptedException {
+	// if (args.length < 2)
+	// return;
 
 	String hostname = "localhost";
 	int port = 8081;
@@ -25,11 +24,15 @@ public class ReverseClient {
 	    PrintWriter writer = new PrintWriter(output, true);
 
 	    Console console = System.console();
-	    String text = "hello world";
-
+	    String text;
+	    int i = 0;
 	    do {
-		//text = console.readLine("Enter text: ");
-
+		// text = console.readLine("Enter text: ");
+		text = "Hello World";
+		i++;
+		if (i == 20) {
+		    text = "bye";
+		}
 		writer.println(text);
 
 		InputStream input = socket.getInputStream();
@@ -37,9 +40,10 @@ public class ReverseClient {
 
 		String time = reader.readLine();
 
-		System.out.println(time);
+		System.out.println("Client[" + i + "]: " + time);
+		Thread.sleep(1000);
 
-	    } while (!text.equals("bye"));
+	    } while (!"bye".equals(text));
 
 	    socket.close();
 
