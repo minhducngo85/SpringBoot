@@ -75,7 +75,7 @@ public class SocketHandler implements Runnable {
 	    String authorizationUrl = HttpOauthService.getAuthorizationUrl();
 	    response = String.format(response, authorizationUrl);
 	    // handle authentication code
-	} else if (path.startsWith("/auth_callback")) {
+	} else if (path.startsWith("/?session_state") || path.startsWith("/?code") || path.startsWith("/auth_callback")) {
 	    String code = SocketHandlerUtils.extractUriParameter(path, "code");
 	    String sessionstate = SocketHandlerUtils.extractUriParameter(path, "session_state");
 	    if (code == null)

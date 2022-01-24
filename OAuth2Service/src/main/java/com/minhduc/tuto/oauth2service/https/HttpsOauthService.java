@@ -42,7 +42,7 @@ public class HttpsOauthService {
     public static final String ClientSecret = "";
     private static int port = 9200;
     private static final String SERVER_URL = "https://localhost:" + port;
-    private static final String CALLBACK_URL = SERVER_URL + "/auth_callback";
+    private static final String CALLBACK_URL = SERVER_URL;
 
     public static String getAuthorizationUrl() {
 	try {
