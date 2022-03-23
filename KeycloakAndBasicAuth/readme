@@ -6,7 +6,9 @@ keycloak userguide: https://www.keycloak.org/docs/13.0/getting_started/
 
 hanle SSL certificate:
 
-sudo keytool -importcert -alias local-CA -keystore /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64/jre/lib/security/cacerts -file keycloak_server.pem
+sudo keytool -importcert -alias local-CA -keystore /usr/lib/jvm/jre-11-openjdk-11.0.14.1.1-2.el8_5.x86_64/lib/security/cacerts -file keycloak_server.pem
+
+pass: changeit
 
 SSL Hanshake issue:
 https://confluence.atlassian.com/kb/how-to-import-a-public-ssl-certificate-into-a-jvm-867025849.html

@@ -89,6 +89,7 @@ public class RestTemplateUtils {
     @SuppressWarnings("rawtypes")
     public static String[] requestTokenFromAuthCode(String code, String sessionstate, String clientId, String clientSecret, String callbackUrl,
             String accessTokenUrl) {
+	LOGGER.debug("accessTokenUrl: {}", accessTokenUrl);
 	LOGGER.debug("Code: {}", code);
 	HttpHeaders mheaders = new HttpHeaders();
 	mheaders.add("Content-Type", "application/x-www-form-urlencoded");
