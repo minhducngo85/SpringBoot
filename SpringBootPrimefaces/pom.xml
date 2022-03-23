@@ -11,7 +11,7 @@
     <groupId>com.minhduc.tuto.springboot</groupId>
     <artifactId>SpringBootPrimefaces</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>SpringBootPrimefaces</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -83,6 +83,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
 
