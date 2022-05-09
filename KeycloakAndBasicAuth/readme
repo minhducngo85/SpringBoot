@@ -11,4 +11,4 @@ sudo keytool -importcert -alias local-CA -keystore /usr/lib/jvm/jre-11-openjdk-1
 pass: changeit
 
 SSL Hanshake issue:
-https://confluence.atlassian.com/kb/how-to-import-a-public-ssl-certificate-into-a-jvm-867025849.html
+https://confluence.atlassian.com/kb/how-to-import-a-public-ssl-certificat-into-a-jvm-867025849.html
