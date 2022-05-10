@@ -1,4 +1,4 @@
-package com.minhduc.tuto.angularspring.AngularSpringBootBackend;
+package com.minhduc.tuto.angularspring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,6 +1,15 @@
 tuto link: https://www.baeldung.com/spring-boot-angular-web
 
+1. download node js and add to path environment
+2. 
+to create angular application
+ng new angularclient
 
 
+ng generate class user
+ng generate service user
+ng generate component user-list
+
+start client
 ng serve --open
 
