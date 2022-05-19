@@ -1,6 +1,5 @@
 package com.minhduc.tuto.jwt;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,23 +41,27 @@ public class SpringJwtSecurityApplication {
 
 	    User aUser = new User("admin", "admin@minhduc-tuto.com", encoder.encode("admin"));
 	    Set<Role> roles = new HashSet<>();
-	    Role aRole = roleRepository.findByName(ERole.ROLE_ADMIN).orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+	    Role aRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+		    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 	    roles.add(aRole);
-	    Role aRole2 = roleRepository.findByName(ERole.ROLE_MODERATOR).orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+	    Role aRole2 = roleRepository.findByName(ERole.ROLE_MODERATOR)
+		    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 	    roles.add(aRole2);
 	    aUser.setRoles(roles);
 	    userRepository.save(aUser);
 
 	    aUser = new User("moderator", "moderator@minhduc-tuto.com", encoder.encode("moderator"));
 	    roles = new HashSet<>();
-	    aRole = roleRepository.findByName(ERole.ROLE_MODERATOR).orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+	    aRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
+		    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 	    roles.add(aRole);
 	    aUser.setRoles(roles);
 	    userRepository.save(aUser);
 
 	    aUser = new User("user", "user@minhduc-tuto.com", encoder.encode("user"));
 	    roles = new HashSet<>();
-	    aRole = roleRepository.findByName(ERole.ROLE_USER).orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+	    aRole = roleRepository.findByName(ERole.ROLE_USER)
+		    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 	    roles.add(aRole);
 	    aUser.setRoles(roles);
 	    userRepository.save(aUser);

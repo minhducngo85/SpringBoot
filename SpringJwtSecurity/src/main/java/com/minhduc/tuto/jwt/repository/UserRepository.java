@@ -6,7 +6,6 @@ import com.minhduc.tuto.jwt.model.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * JpaRepository extends PagingAndSortingRepository which in turn extends
