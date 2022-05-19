@@ -81,9 +81,14 @@ Bearer
 http://localhost:8080/api/test/admin
 Bearer
 
+###################################
+open point: refresh token implementation
+https://www.bezkoder.com/spring-boot-jwt-authentication/
+
 ####################################################################
 C. Credits:
 tuto link:
+https://www.bezkoder.com/angular-13-jwt-auth/
 https://www.bezkoder.com/angular-12-spring-boot-jwt-auth/
 
 backend:
