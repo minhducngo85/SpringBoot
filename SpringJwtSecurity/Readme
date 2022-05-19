@@ -1,0 +1,94 @@
+A. Overview
+These are APIs that we need to provide:
+Methods		Urls				Actions
+POST		/api/auth/signup	signup new account
+POST		/api/auth/signin	login an account
+GET			/api/test/all		retrieve public content
+GET			/api/test/user		access User’s content
+GET			/api/test/mod		access Moderator’s content
+GET			/api/test/admin		access Admin’s content
+
+##############################################################
+B. Implementation
+1. Setup project with maven dependencies
+2. Confgiuration for data source
+
+MySQL
+spring.datasource.url= jdbc:mysql://localhost:3306/jwtdb?useSSL=false
+spring.datasource.username= root
+spring.datasource.password= 123456
+spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.MySQL5InnoDBDialect
+spring.jpa.hibernate.ddl-auto= update
+# App Properties
+bezkoder.app.jwtSecret= myjwtSecretKey
+bezkoder.app.jwtExpirationMs= 86400000
+
+H2 DB
+spring.datasource.url=jdbc:h2:mem:jwtdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+# App Properties
+bezkoder.app.jwtSecret= myjwtSecretKey
+bezkoder.app.jwtExpirationMs= 86400000
+
+3. create model
+4. create repository
+5. configure security
+WebSecurityConfig.java
+
+5. RUn & Test
+with POST man or with swagger ui: http://localhost:8080/swagger-ui/index.html
+POST man project: SpringJwt.postman_collection.json
+
+three default users: (admin,admin),(moderator,moderator),(user,user)
+
+51. sigin with default admin
+POST http://localhost:8080/api/auth/signin
+{
+"username":"admin",
+"password":"admin"
+}
+
+response:
+{
+    "id": 1,
+    "username": "admin",
+    "email": "admin@minhduc-tuto.com",
+    "roles": [
+        "ROLE_ADMIN"
+    ],
+    "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY1Mjk2MjY3MiwiZXhwIjoxNjUzMDQ5MDcyfQ.16oWpPxyUjxY5xqBrtHJ2F3Awy0Iu6C3gbrEbbNx5yOntXNTmd4Onz3s-HIMkwYCjFyDDBYCF35BT1T9mKe_lA",
+    "tokenType": "Bearer"
+}
+
+5.2
+create an admin user:
+http://localhost:8080/api/auth/signup
+{
+"username":"admin2",
+"password":"admin",
+"email":"admin2@minhduc.com",
+"role":["admin"]
+}
+
+5.2 access reource
+http://localhost:8080/api/test/user
+Bearer
+
+http://localhost:8080/api/test/admin
+Bearer
+
+####################################################################
+C. Credits:
+tuto link:
+https://www.bezkoder.com/angular-12-spring-boot-jwt-auth/
+
+backend:
+https://www.bezkoder.com/spring-boot-jwt-authentication/
+
+frontend:
+
+https://www.bezkoder.com/angular-12-jwt-auth/
