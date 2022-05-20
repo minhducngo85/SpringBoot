@@ -1,4 +1,4 @@
-package com.minhduc.tuto.jwt;
+package com.minhduc.tuto.jwt.controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
