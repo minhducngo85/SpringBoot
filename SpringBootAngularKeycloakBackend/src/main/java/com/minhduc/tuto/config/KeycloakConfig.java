@@ -1,4 +1,4 @@
-package com.example.config;
+package com.minhduc.tuto.config;
 
 import org.keycloak.adapters.KeycloakConfigResolver;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;

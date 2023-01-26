@@ -1,10 +1,10 @@
-package com.example.controller.service;
+package com.minhduc.tuto.controller.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.model.Customer;
+import com.minhduc.tuto.model.Customer;
 
 @Service
 public class DemoService {

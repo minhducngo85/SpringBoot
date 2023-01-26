@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.minhduc.tuto.controller;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.controller.service.DemoService;
-import com.example.model.Customer;
-import com.example.model.MessageResponse;
+import com.minhduc.tuto.controller.service.DemoService;
+import com.minhduc.tuto.model.Customer;
+import com.minhduc.tuto.model.MessageResponse;
 
 @CrossOrigin("*")
 @RestController

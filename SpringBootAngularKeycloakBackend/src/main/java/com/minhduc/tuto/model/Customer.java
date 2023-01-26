@@ -1,4 +1,4 @@
-package com.example.model;
+package com.minhduc.tuto.model;
 
 public class Customer {
     private int id;
