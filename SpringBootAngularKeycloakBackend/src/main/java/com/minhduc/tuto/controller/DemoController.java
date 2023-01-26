@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,8 @@ import com.minhduc.tuto.model.MessageResponse;
 @RestController
 @RequestMapping(value = "/api")
 public class DemoController {
+    
+    private static final Logger LOGGER = LogManager.getLogger(DemoController.class);
 
     @Autowired
     private DemoService service;
@@ -30,7 +34,7 @@ public class DemoController {
     @GetMapping(value = "/admin")
     @RolesAllowed("ROLE_ADMIN")
     public MessageResponse adminEndPoint() {
-	System.out.println("Admin endpoint!");
+	LOGGER.debug("Admin endpoint!");
 	return new MessageResponse("Hello From Admin! Msg was sent from backend!");
     }
 
@@ -42,7 +46,7 @@ public class DemoController {
     @GetMapping(value = "/dashboard")
     @RolesAllowed({ "ROLE_ADMIN", "ROLE_MANAGER", "ROLE_USER" })
     public MessageResponse loggedUserEndPoint() {
-	System.out.println("Dashboard endpoint!");
+	LOGGER.debug("Dashboard endpoint!");
 	return new MessageResponse("Hello From Dashboard! Msg was sent from backend!");
     }
 
@@ -54,14 +58,14 @@ public class DemoController {
     @GetMapping(value = "/manager")
     @RolesAllowed("ROLE_MANAGER")
     public MessageResponse managerEndPoint() {
-	System.out.println("Manager endpoint!");
+	LOGGER.debug("Manager endpoint!");
 	return new MessageResponse("Hello From Manager! Msg was sent from backend!");
     }
 
     @GetMapping("/customers")
     @RolesAllowed("ROLE_ADMIN")
     public List<Customer> getCustomers() {
-	System.out.println("Customer endpoint!");
+	LOGGER.debug("Customer endpoint!");
 	return service.getCustomers();
     }
 }
